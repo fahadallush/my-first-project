@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="width=device-width, initial-scale=1">
+    <title>مطعم الخبراء</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/myapp/css/style1.css">
+</head>
+<style>
+    /* Styles for the cart items */
+    .itemContainer {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .item {
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .iteminfo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .p_img img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-right: 15px;
+    }
+
+    /* Styles for the product name */
+    .item p {
+        margin: 0;
+        font-size: 18px;
+        color: #333;
+        font-weight: 600;
+    }
+
+    .quantity {
+        font-size: 16px;
+        color: #666;
+        margin-top: 5px;
+    }
+
+    .price {
+        font-size: 18px;
+        color: #007bff;
+        font-weight: 600;
+    }
+
+    /* Styles for the pay section */
+    .pay-section {
+        margin-top: 20px;
+        text-align: right;
+    }
+
+    button {
+        padding: 12px 24px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+<body>
+<div class="col-xl" style="background-size: cover;background-repeat: no-repeat; background-image: url(https://scontent.fruh8-1.fna.fbcdn.net/v/t39.30808-6/438099460_122109521054284002_7032166223607204119_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=IpKDkOQZ5qoQ7kNvgE2Mlgf&_nc_ht=scontent.fruh8-1.fna&oh=00_AYB-MXQRIpWeD0esfehcL284PJ_hHYqZ5St8u56bBW04-w&oe=664464EE);background-size: 100% 100%;min-height: 100vh;">
+    <div class="container">
+        <div class="jumbotron">
+            <h2><center>العربه</center></h2>
+            <div class="itemContainer">
+                {% for item in items %}
+                <div class="item">
+                    <div class="iteminfo">
+                        <div class="p_img">
+                            <img src="{{ item.product.picture.url }}" alt="{{ item.product.name }}">
+                        </div>
+                        <div>
+                            <p>{{ item.product.name }}</p>
+                            <p class="quantity">الكمية: {{ item.quantity }}</p>
+                        </div>
+                    </div>
+                    <p class="price">ريال{{ item.price }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="pay-section">
+                <div class="text-center">
+                    <h3>المجموع الكلي: ريال{{ cart.total_price }}</h3>
+                    <form action="{% url 'save_cart' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" value="Save Cart">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

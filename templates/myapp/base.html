@@ -1,0 +1,146 @@
+{%load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>مطعم الخبراء</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="/static/myapp/css/style1.css">
+    
+  </head>
+      <div dir="ltr" align="right">
+        <div class="col-xl" style=" background-size: cover;background-repeat: no-repeat ; background-image: url(https://scontent.fruh8-1.fna.fbcdn.net/v/t39.30808-6/438099460_122109521054284002_7032166223607204119_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=IpKDkOQZ5qoQ7kNvgE2Mlgf&_nc_ht=scontent.fruh8-1.fna&oh=00_AYB-MXQRIpWeD0esfehcL284PJ_hHYqZ5St8u56bBW04-w&oe=664464EE);background-size: 100% 100%;min-height: 100vh; "  >
+        <nav class="navbar navbar-* bg-dark">
+          <a class="navbar-brand-*" href="{% url 'home' %}">
+            <img src="https://scontent.fruh8-1.fna.fbcdn.net/v/t39.30808-6/438119798_122107193258284002_1491860725750824344_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=bpYE9yYY-ecQ7kNvgHM8Aal&_nc_ht=scontent.fruh8-1.fna&oh=00_AYAcE7TU07ZWEZf3Gbv_OkF1lHXkQeUaUP8mhHbpORAnEQ&oe=664325CA"  alt="" width="75" height="75" alt="...">
+            
+        </a>
+        <h1 class="bg- mb-  p-  " style=" color:#c5aa6a; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" ><strong><i style="font-size: larger;">الخبراء</i></strong></h1>
+
+        <div>
+          <ul>
+          {% if user.is_authenticated %}
+          <li><p style="background-color: rgb(79, 162, 192); " >Username: {{user.username}}</p></li>
+          <a class=" col  navbar navbar-*   btn btn-primary   " href="{% url 'logout' %}">تسجيل خروج </a><p style="background-color: rgb(81, 140, 161); " >
+          {% else %}
+          <li><a class=" col  navbar navbar-*   btn btn-primary   " href="{% url 'login' %}">تسجيل الدخول</a><p style="background-color: rgb(81, 140, 161); " ></li>
+          {% endif %}
+        
+        
+        </ul>
+           
+        
+        </div>
+          
+      </nav>
+        
+      
+
+      <div dir="rtl" align="right">
+        <div>
+
+          {% for message in messages %}
+          <div class="alert alert-success" role="alert" >
+            <h2>
+              {{ message }}
+              </h2>
+            
+          </div>
+          
+          {% endfor %}
+          
+        
+          <header class="blog-header py-3 bg-img " >
+            <div class="mr-5 ">
+              <div class="mr-5 ">
+                <div class="mr-5 ">
+            <div class="row flex-nowrap justify-content-center align-items-center">                 
+              <div class="col-8 mr-5 text-center">
+                
+              </div>
+              <div class="col-2 mr-5 d-flex justify-content-end align-items-center">
+                <a class="text-muted" href="{% url 'cart' %}">
+                  <button type="button" class="btn btn-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"></path>
+</svg>
+              </button>
+                  
+              </div>
+            </div>
+          </header><br>
+          <div class="container ">
+          <div class="bg-img shadow-1-strong " style="background-color: #c5aa6a;">
+            <div class="nav-scroller py-3 mb-1 " >
+            <nav class="nav d-flex justify-content-between">
+              <a class="btn btn-light m-2  p-1"   style=" background-color:gold;  Text-decoration: none;font-family: Arial, Helvetica, sans-serif;" href="{% url 'home' %}">الصفحه الرئيسيه</a>
+              <a class="btn btn-light m-2  p-1 "  style="background-color:gold; Text-decoration: none;font-family: Arial, Helvetica, sans-serif;" href="{% url 'Offers' %}">العروض</a>
+              <a class="btn btn-light  m-2  p-1 " style="background-color:gold; Text-decoration: none;font-family: Arial, Helvetica, sans-serif;" href="{% url 'ournews' %}">جديدنا</a>
+              <a class="btn btn-light  m-2  p-1 " style="background-color:gold; Text-decoration: none;font-family: Arial, Helvetica, sans-serif;" href="{% url 'Meals' %}">الوجبات</a>
+              <a class="btn btn-light  m-2  p-1 " style="background-color:gold; Text-decoration: none;font-family: Arial, Helvetica, sans-serif;" href="{% url 'burgers' %}">برقر</a>
+              <a class="btn btn-light  m-2  p-1 " style="background-color:gold; Text-decoration: none;font-family: Arial, Helvetica, sans-serif;" href="{% url 'potato' %}">البطاطس</a>
+              <a class="btn btn-light  m-2  p-1 " style="background-color:gold; Text-decoration: none;font-family: Arial, Helvetica, sans-serif;" href="{% url 'piessection' %}">قسم الفطائر</a>
+              <a class="btn btn-light  m-2  p-1 " style="background-color:gold; Text-decoration: none;font-family: Arial, Helvetica, sans-serif;" href="{% url 'sweets' %}">الحلويات</a>
+              <a class="btn btn-light  m-2  p-1 " style="background-color:gold; Text-decoration: none;font-family: Arial, Helvetica, sans-serif;" href="{% url 'Drinks' %}">المشروبات</a>
+            </nav>
+          </div>
+    
+    
+  
+      </head>
+        
+<body class="">
+
+  
+    
+        
+  
+    <div dir="rtl" align="right">
+      {% block nickname %}
+     
+    
+      {% endblock nickname %}
+    </div>
+          </div>
+          </div>
+      </div>
+        </div>
+      </div>
+    
+</body>
+<form class="col-xl" action="">
+<footer class="pt-4 my-md-5 pt-md-5 mr-0 border-top bg-light " style="-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
+  <div class="row" dir="rtl" align="right">
+    <div class="col-5 col-md">
+      <img class="mb-2" src="https://scontent.fruh8-1.fna.fbcdn.net/v/t39.30808-6/438119798_122107193258284002_1491860725750824344_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=bpYE9yYY-ecQ7kNvgHM8Aal&_nc_ht=scontent.fruh8-1.fna&oh=00_AYAcE7TU07ZWEZf3Gbv_OkF1lHXkQeUaUP8mhHbpORAnEQ&oe=664325CA" alt="" width="50" height="50">
+      <small class="d-block mb-3 text-muted">© 2024-2025</small>
+      <a class="  bi bi-facebook mr-5 " href="https://www.facebook.com/profile.php?id=61558520084766&locale=ar_AR">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+          <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+        </svg>
+    </a>
+    </div>
+    <div class="col-6 col-md">
+      
+    </div>
+    <div class="col-6 col-md">
+      <h5>معلومات عنا</h5>
+      <ul class="list-unstyled text-small">
+        <li><h5  class="text-strong" href="#">لي التواصل  ٠٥٥٥٥٥٥٥٥٥</h5></li>
+        <li><h5  class="text-" href="#">البريد الكتروني alKubara@gmail.com</h5></li>
+        <li><a class="text-muted" href="{% url 'Technicalsupport' %}"><input class="btn btn-dark" type="button" value="الدعم الفني"></a></li>
+        <li><a class="text-muted" href="#"></a></li>
+        <li><a href="{% url 'Dashboard' %}"><input class="btn btn-danger" type="button" value="لوحة البيانات"></a></li>
+      </ul>
+      
+    </div>
+  </div>
+</footer>
+<script src="{% static '/static/myapp/js/script.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+</html>

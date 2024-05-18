@@ -1,0 +1,25 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block nickname %}
+
+<head>
+    <title>Restaurant Feedback</title>
+</head>
+<body>
+    <div dir="ltr" align="left">
+    <div class="container">
+        
+        <div class="jumbotron">
+
+    <h2>Restaurant Feedback</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Submit Feedback</button>
+    </form>
+        </div>
+    </div>
+    </div>
+</body>
+
+{% endblock nickname %}

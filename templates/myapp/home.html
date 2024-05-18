@@ -1,0 +1,34 @@
+{% extends "myapp/base.html" %}
+{% load static %}
+
+{% block nickname %}  
+<div class="end">
+  <div class="container">
+    <div class="row">
+      {% for product in products %}
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <img class="card-img-top" src="{{ product.picture.url }}" alt="{{ product.name }}" width="300" height="250">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <h5 class="card-text text-right"> ريال {{ product.price }}</h5>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="input-group">
+                <div class="input-group-append">
+                  {% if user.is_authenticated %}
+                    {% csrf_token %}
+                    <button type="submit" value="{{product.id}}">إضافة إلى العربة</button>
+                  {% else %}
+                  <a href="{% url 'login' %}?next={{ request.path }}" class="btn btn-danger">يجب تسجيل الدخول لي إضافه في العريه</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock nickname %}
